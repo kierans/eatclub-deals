@@ -27,6 +27,10 @@ public class DealsBuilder {
       .formatted(toArray(deals));
   }
 
+  public List<Deal> build() {
+    return deals.stream().map(DealBuilder::build).toList();
+  }
+
   private String toArray(final List<DealBuilder> lst) {
     return "[ %s ]".formatted(
       lst.stream().map(DealBuilder::buildAsJson).collect(Collectors.joining(","))

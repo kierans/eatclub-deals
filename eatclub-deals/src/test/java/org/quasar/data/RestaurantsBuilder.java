@@ -27,6 +27,10 @@ public class RestaurantsBuilder {
       .formatted(toArray(restaurants));
   }
 
+  public List<Restaurant> build() {
+    return restaurants.stream().map(RestaurantBuilder::build).toList();
+  }
+
   private String toArray(final List<RestaurantBuilder> lst) {
     return "[ %s ]".formatted(
       lst.stream().map(RestaurantBuilder::buildAsJson).collect(Collectors.joining(","))
