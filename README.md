@@ -6,8 +6,11 @@ Implementation of EatClub Developer Challenge
 
 - Java 21
 - Maven 3.9
+- AWS CLI (optional)
 
 ## Build & Test
+
+The application is developed using [Quarkus][1] as it is a lightweight Java framework.
 
 To build and run tests:
 
@@ -32,10 +35,15 @@ To run the application locally, use Quarkus Dev mode. The application will be av
 $ mvn quarkus:dev
 ```
 
+```shell
+$ curl http://localhost:8080/deals?timeOfDay=18:00
+$ curl http://localhost:8080/peak-deals-window
+```
+
 ### Deploying to AWS
 
-The application can be deployed to AWS by using the `cdk` module. It will deploy using the AWS profile set on the CLI
-via the [AWS env vars][1]
+The application can be deployed to AWS as a Lambda by using the `cdk` module. It will deploy using the AWS profile 
+set on the CLI via the [AWS env vars][1]
 
 [1]: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
 
@@ -112,10 +120,10 @@ erDiagram
 - AvailableDeals: A restaurant can have multiple deals, and multiple deals can be applied at a restaurant.
 
 The database schema is defined for the MySQL database. It's the one that I have the most experience with, and have used
-for previous projects. I have even developed tools to assist with CI/CD pipelines for MySQL databases.
-
-For example, https://github.com/kierans/flyway-mysql-rds to allow secure migrations to be run against a MySQL database
-in AWS RDS.
+for previous projects. I have even developed tools to assist with CI/CD pipelines for MySQL databases. For example, 
+https://github.com/kierans/flyway-mysql-rds to allow secure migrations to be run against a MySQL database in AWS RDS.
 
 See also https://github.com/kierans/rds-kickstarter which I created to help teach students/junior devs about how to
 properly manage a MySQL database in AWS RDS using 12 Factor App principles.
+
+[1]: https://quarkus.io
