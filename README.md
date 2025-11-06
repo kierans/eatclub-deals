@@ -119,6 +119,9 @@ erDiagram
 - Deal: A deal that can be applied to a restaurant.
 - AvailableDeals: A restaurant can have multiple deals, and multiple deals can be applied at a restaurant.
 
+For performance, the schema should have indexes on commonly searched fields. For example, if a common search is to find
+all deals for a restaurant that serves a particular cuisine, then the schema should have an index on `Cuisines.CUISINE`.
+
 The database schema is defined for the MySQL database. It's the one that I have the most experience with, and have used
 for previous projects. I have even developed tools to assist with CI/CD pipelines for MySQL databases. For example, 
 https://github.com/kierans/flyway-mysql-rds to allow secure migrations to be run against a MySQL database in AWS RDS.
