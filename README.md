@@ -15,6 +15,15 @@ To build and run tests:
 $ mvn clean package
 ```
 
+## Endpoints
+
+There are two endpoints in the application
+ - `GET /deals?timeOfDay=10:00`
+ - `GET /peak-deals-window`
+
+The Deals endpoint expects a `timeOfDay` query parameter. The value of the parameter should be in the format `HH:mm` 
+in 24-hour time. Therefore, `10:00AM` is `10:00` and `3:00PM` is `15:00`.
+
 ## Running
 
 To run the application locally, use Quarkus Dev mode. The application will be available at http://localhost:8080/
