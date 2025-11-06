@@ -23,8 +23,23 @@ public class JsonDealsRepository implements DealsRepository {
     return DealsFilter.filterRestaurantsByDetailsActiveAt(restaurants, time);
   }
 
+  @Override
+  public Optional<PeakDealsWindow> findPeakTimeForDeals() {
+    return PeakDealsWindowFinder.findPeakDealWindow(toTimeRanges());
+  }
+
   public boolean jsonLoaded() {
     return restaurants != null;
+  }
+
+  private List<TimeRange> toTimeRanges() {
+    return restaurants.stream()
+      .flatMap(r ->
+        r.deals().stream().map(d ->
+          new TimeRange(d.getDealStart(r.open()), d.getDealEnd(r.close()))
+        )
+      )
+      .toList();
   }
 
   private List<Restaurant> loadFromJson() {
