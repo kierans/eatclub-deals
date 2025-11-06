@@ -1,10 +1,9 @@
-package org.quasar.eatclub;
+package org.quasar.eatclub.data;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import org.junit.jupiter.api.Test;
-import org.quasar.eatclub.data.JsonDealsRepository;
 
 public class JsonDealsRepositoryTest {
   @Test
