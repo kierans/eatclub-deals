@@ -1,4 +1,4 @@
-package org.quasar.eatclub;
+package org.quasar.eatclub.data;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
@@ -9,10 +9,6 @@ import java.time.LocalTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.quasar.eatclub.data.DealsBuilder;
-import org.quasar.eatclub.data.Restaurant;
-import org.quasar.eatclub.data.RestaurantBuilder;
-import org.quasar.eatclub.data.RestaurantsBuilder;
 
 public class DealsFilterTest {
   private final LocalTime beforeOpening = RestaurantBuilder.DEFAULT_OPEN.minusHours(2);

@@ -1,4 +1,4 @@
-package org.quasar.eatclub;
+package org.quasar.eatclub.deals;
 
 import java.time.LocalTime;
 import java.util.List;

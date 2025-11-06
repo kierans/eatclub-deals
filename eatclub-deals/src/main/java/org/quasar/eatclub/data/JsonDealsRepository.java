@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import org.quasar.eatclub.DealsFilter;
 import org.quasar.eatclub.data.json.RestaurantsParser;
 
 // This is so wrong.

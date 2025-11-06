@@ -1,4 +1,4 @@
-package org.quasar.eatclub;
+package org.quasar.eatclub.deals;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

@@ -1,13 +1,10 @@
-package org.quasar.eatclub;
+package org.quasar.eatclub.data;
 
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import org.quasar.eatclub.data.Deal;
-import org.quasar.eatclub.data.Restaurant;
 
 public class DealsFilter {
   public static List<Restaurant> filterRestaurantsByDetailsActiveAt(

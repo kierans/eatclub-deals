@@ -1,4 +1,4 @@
-package org.quasar.eatclub;
+package org.quasar.eatclub.deals;
 
 import org.quasar.eatclub.data.Deal;
 import org.quasar.eatclub.data.Restaurant;
