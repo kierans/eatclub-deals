@@ -69,8 +69,8 @@ public class PeakDealsWindowFinder {
     return Optional.of(sweepEventsForPeakDealWindow(toEvents(ranges)));
   }
 
-  private static PeakDealsWindow sweepEventsForPeakDealWindow(final List<Event> events) {
-    var result = events.stream().reduce(
+  private static PeakDealsWindow sweepEventsForPeakDealWindow(final Stream<Event> events) {
+    var result = events.reduce(
       new PeakDealWindowSweeperState(),
       (state, event) -> {
         if (event.type.isStartEvent()) {
@@ -101,7 +101,7 @@ public class PeakDealsWindowFinder {
     return new PeakDealsWindow(result.peakStart, result.peakEnd, result.maxActive);
   }
 
-  private static List<Event> toEvents(final List<TimeRange> ranges) {
+  private static Stream<Event> toEvents(final List<TimeRange> ranges) {
     return ranges.stream()
       .flatMap(
         (r) ->
@@ -110,8 +110,7 @@ public class PeakDealsWindowFinder {
             new Event(r.end(), EventType.END_EVENT)
           )
       )
-      .sorted()
-      .toList();
+      .sorted();
   }
 
   private enum EventType {
