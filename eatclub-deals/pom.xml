@@ -30,6 +30,7 @@ mvn archetype:generate \
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>3.29.0</quarkus.platform.version>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <junit.version>5.7.1</junit.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -59,6 +60,18 @@ mvn archetype:generate \
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter</artifactId>
+          <version>${junit.version}</version>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>3.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
