@@ -11,8 +11,7 @@ public class EatClubDealsStack extends Stack {
     var lambda = new QuarkusLambda(
       this,
       "../eatclub-deals/target/function.zip",
-      "EatClubDeals",
-      "io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest"
+      "EatClubDeals"
     );
 
     @SuppressWarnings("unused")

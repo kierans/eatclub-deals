@@ -20,8 +20,7 @@ public class QuarkusLambda extends Construct {
   public QuarkusLambda(
     @NotNull final Construct scope,
     @NotNull final String functionZip,
-    @NotNull final String functionName,
-    @NotNull final String functionHandler
+    @NotNull final String functionName
   ) {
     super(scope, "%sLambda".formatted(functionName));
 
@@ -32,7 +31,7 @@ public class QuarkusLambda extends Construct {
       .runtime(Runtime.JAVA_21)
       .architecture(Architecture.ARM_64)
       .code(Code.fromAsset(functionZip))
-      .handler(functionHandler)
+      .handler("io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest")
       .memorySize(ONE_CPU)
       .functionName(functionName)
       .timeout(Duration.seconds(10))

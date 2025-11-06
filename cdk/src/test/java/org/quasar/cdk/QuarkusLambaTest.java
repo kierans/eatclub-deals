@@ -31,6 +31,6 @@ public class QuarkusLambaTest {
   }
 
   private static Exception causeException(final String functionZip) {
-    return assertThrows(IllegalArgumentException.class, () -> new QuarkusLambda(new App(), functionZip, "test", "test"));
+    return assertThrows(IllegalArgumentException.class, () -> new QuarkusLambda(new App(), functionZip, "test"));
   }
 }
