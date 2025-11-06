@@ -19,20 +19,20 @@ public class DealParser {
   }
 
   public static Deal parseDeal(final JsonNode tree) {
-    final String objectId = text(tree, "objectId");
-    final String discount = text(tree, "discount");
-    final Boolean dineIn = booleanText(tree, "dineIn");
-    final Boolean lightning = booleanText(tree, "lightning");
+    return new Deal(
+      text(tree, "objectId"),
+      text(tree, "discount"),
+      booleanText(tree, "dineIn"),
+      booleanText(tree, "lightning"),
 
-    // the start might be keyed by 'start' or 'open'
-    final Optional<LocalTime> start = parseTime(findFirst(tree, List.of("start", "open")));
+      // the start might be keyed by 'start' or 'open'
+      parseTime(findFirst(tree, List.of("start", "open"))),
 
-    // the end might be keyed by 'end' or 'close'
-    final Optional<LocalTime> end = parseTime(findFirst(tree, List.of("end", "close")));
+      // the end might be keyed by 'end' or 'close'
+      parseTime(findFirst(tree, List.of("end", "close"))),
 
-    final Long qtyLeft = longText(tree, "qtyLeft");
-
-    return new Deal(objectId, discount, dineIn, lightning, start, end, qtyLeft);
+      longText(tree, "qtyLeft")
+    );
   }
 
   private static Optional<LocalTime> parseTime(final Optional<String> timeText) {
