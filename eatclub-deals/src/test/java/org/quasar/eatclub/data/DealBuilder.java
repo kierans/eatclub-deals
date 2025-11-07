@@ -91,6 +91,9 @@ public class DealBuilder {
   }
 
   public Deal build() {
+    var start = this.start.orElse(DEFAULT_START);
+    var end = this.end.orElse(DEFAULT_END);
+
     return new Deal(objectId, discount, dineIn, lightning, start, end, qtyLeft);
   }
 
@@ -112,6 +115,4 @@ public class DealBuilder {
       }
       """.formatted(jsonCreator.build());
   }
-
-
 }

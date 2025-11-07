@@ -15,7 +15,7 @@ public class DealsFilter {
       .map(r -> {
         final List<Deal> activeDeals = r.deals()
           .stream()
-          .filter(isActiveAt(time, r))
+          .filter(isActiveAt(time))
           .collect(Collectors.toList());
 
         if (activeDeals.isEmpty()) {
@@ -39,10 +39,10 @@ public class DealsFilter {
       .collect(Collectors.toList());
   }
 
-  private static Predicate<Deal> isActiveAt(final LocalTime time, final Restaurant restaurant) {
+  private static Predicate<Deal> isActiveAt(final LocalTime time) {
     return (deal) -> {
-      final LocalTime start = deal.getDealStart(restaurant.open());
-      final LocalTime end = deal.getDealEnd(restaurant.close());
+      final LocalTime start = deal.start();
+      final LocalTime end = deal.end();
 
       // cater for the time when the patron walks in the door right when then the deal becomes active
       // but once the deal ends, it's all over.

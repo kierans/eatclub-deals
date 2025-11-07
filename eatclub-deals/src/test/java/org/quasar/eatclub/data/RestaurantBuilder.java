@@ -140,8 +140,8 @@ public class RestaurantBuilder {
     jsonCreator.appendPair("discount", deal.discount());
     jsonCreator.appendPair("dineIn", deal.dineIn());
     jsonCreator.appendPair("lightning", deal.lightning());
-    deal.start().ifPresent(jsonCreator.appendTimePair("start"));
-    deal.end().ifPresent(jsonCreator.appendTimePair("end"));
+    jsonCreator.appendTimePair("start");
+    jsonCreator.appendTimePair("end");
     jsonCreator.appendPair("qtyLeft", deal.qtyLeft(), true);
 
     return """

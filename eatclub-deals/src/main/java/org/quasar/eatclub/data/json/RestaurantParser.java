@@ -4,6 +4,7 @@ import static org.quasar.eatclub.data.json.DealsParser.parseDeals;
 import static org.quasar.eatclub.data.json.JsonParser.text;
 import static org.quasar.eatclub.data.json.JsonParser.timeText;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -15,6 +16,11 @@ public class RestaurantParser {
   }
 
   public static Restaurant parseRestaurant(final JsonNode tree) {
+    var state = new RestaurantParserState(
+      timeText(tree, "open"),
+      timeText(tree, "close")
+    );
+
     return new Restaurant(
       text(tree, "objectId"),
       text(tree, "name"),
@@ -22,10 +28,20 @@ public class RestaurantParser {
       text(tree, "suburb"),
       parseCuisines(tree),
       text(tree, "imageLink"),
-      timeText(tree, "open"),
-      timeText(tree, "close"),
-      parseDeals(tree)
+      state.open,
+      state.close,
+      parseDeals(state, tree)
     );
+  }
+
+  /*
+   * Records state from parsing a restaurant for use by other parsers
+   */
+  public record RestaurantParserState(
+    LocalTime open,
+    LocalTime close
+  ) {
+
   }
 
   private static List<String> parseCuisines(final JsonNode tree) {

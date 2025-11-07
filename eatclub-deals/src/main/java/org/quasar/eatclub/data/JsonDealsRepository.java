@@ -36,7 +36,7 @@ public class JsonDealsRepository implements DealsRepository {
     return restaurants.stream()
       .flatMap(r ->
         r.deals().stream().map(d ->
-          new TimeRange(d.getDealStart(r.open()), d.getDealEnd(r.close()))
+          new TimeRange(d.start(), d.end())
         )
       )
       .toList();
