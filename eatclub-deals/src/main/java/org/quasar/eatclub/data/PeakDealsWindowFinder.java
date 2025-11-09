@@ -103,13 +103,11 @@ public class PeakDealsWindowFinder {
 
   private static Stream<Event> toEvents(final List<TimeRange> ranges) {
     return ranges.stream()
-      .flatMap(
-        (r) ->
-          Stream.of(
-            new Event(r.start(), EventType.START_EVENT),
-            new Event(r.end(), EventType.END_EVENT)
-          )
-      )
+      .flatMap((range) ->
+        Stream.of(
+          new Event(range.start(), EventType.START_EVENT),
+          new Event(range.end(), EventType.END_EVENT)
+        ))
       .sorted();
   }
 
